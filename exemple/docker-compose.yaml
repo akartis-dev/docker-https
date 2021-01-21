@@ -1,0 +1,28 @@
+version: '3'
+services:
+    nodejs:
+        build:
+          context: .
+          dockerfile: ./docker/node/Dockerfile
+        container_name: nodejs
+        expose:
+          - 8080
+        volumes:
+          - ./app/:/home/botNode/
+        environment:
+          VIRTUAL_HOST: akartis-api.tk
+          LETSENCRYPT_HOST: akartis-api.tk
+          LETSENCRYPT_EMAIL: leon@gmail.com
+    simpleweb:
+        image: yeasy/simple-web
+        expose:
+          - 80
+        environment:
+          VIRTUAL_HOST: akartis.tk
+          LETSENCRYPT_HOST: akartis.tk
+          LETSENCRYPT_EMAIL: leon@gmail.com
+
+networks:
+  default:
+    external:
+      name: nginx-proxy
