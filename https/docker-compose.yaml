@@ -12,7 +12,7 @@ services:
       - html:/usr/share/nginx/html
       - certs:/etc/nginx/certs
       - ./fpm_location.conf:/etc/nginx/vhost.d/pharma.akartis-dev.tk_location:ro
-      - ./fpm_static.conf:/etc/nginx/vhost.d/pharma.akartis-dev.tk:ro
+      - ./fpm_static.conf:/etc/nginx/vhost.d/pharma.akartis-dev.tk_static:ro
     labels:
       - "com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy=true"
 
